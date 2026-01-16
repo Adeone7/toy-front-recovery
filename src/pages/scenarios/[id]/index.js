@@ -33,7 +33,11 @@ export default function SimulateResultPage() {
   useEffect(() => {
     if (!id) return;
 
-    fetch("http://192.168.0.15:8080/api/scenarios/" + id + "/simulate")
+    fetch(
+      `http://${process.env.NEXT_PUBLIC_APS_SERVER_ADDRESS}:8080/api/scenarios/` +
+        id +
+        "/simulate"
+    )
       .then((response) => response.json())
       .then((json) => setSchedules(json.schedules));
   }, [id]);

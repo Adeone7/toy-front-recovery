@@ -39,13 +39,16 @@ export function ScenarioDialog() {
     console.log(new Date().toISOString());
     const scheduleAt =
       scenario.scheduleDate.split("T")[0] + "T" + scenario.scheduleTime;
-    const response = await fetch("http://192.168.0.15:8080/api/scenarios", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({ ...scenario, scheduleAt }),
-    });
+    const response = await fetch(
+      `http://${process.env.NEXT_PUBLIC_APS_SERVER_ADDRESS}:8080/api/scenarios`,
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({ ...scenario, scheduleAt }),
+      }
+    );
     const json = await response.json();
     window.alert(json.created.id);
   };

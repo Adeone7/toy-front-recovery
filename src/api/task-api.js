@@ -1,17 +1,22 @@
 export async function getTasks() {
-  const response = await fetch("http://192.168.0.15:8080/api/tasks");
+  const response = await fetch(
+    `http://${process.env.NEXT_PUBLIC_APS_SERVER_ADDRESS}:8080/api/tasks`
+  );
   const json = await response.json();
   return json;
 }
 
 export async function postTasks(tasks) {
-  const response = await fetch("http://192.168.0.15:8080/api/tasks", {
-    headers: {
-      "Content-type": "application/json",
-    },
-    method: "POST",
-    body: JSON.stringify({ tasks: tasks }),
-  });
+  const response = await fetch(
+    `http://${process.env.NEXT_PUBLIC_APS_SERVER_ADDRESS}:8080/api/tasks`,
+    {
+      headers: {
+        "Content-type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({ tasks: tasks }),
+    }
+  );
   if (response.status === 204) {
     return true;
   } else {
@@ -22,10 +27,13 @@ export async function postTasks(tasks) {
 export async function parseXLS(file) {
   const formData = new FormData();
   formData.append("file", file);
-  const response = await fetch("http://192.168.0.15:8080/api/tasks/parse/xls", {
-    method: "POST",
-    body: formData,
-  });
+  const response = await fetch(
+    `http://${process.env.NEXT_PUBLIC_APS_SERVER_ADDRESS}:8080/api/tasks/parse/xls`,
+    {
+      method: "POST",
+      body: formData,
+    }
+  );
   const json = await response.json();
   return json;
 }

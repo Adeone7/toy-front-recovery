@@ -12,6 +12,8 @@ const geistMono = Geist_Mono({
 });
 
 export default function Home() {
+  console.log(`${process.env.DB_PASSWORD}`);
+  console.log(`${process.env.NEXT_PUBLIC_APS_SERVER}`);
   return (
     <div
       className={`${geistSans.className} ${geistMono.className} flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black`}

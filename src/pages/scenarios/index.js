@@ -17,7 +17,9 @@ export default function ScenarioPage() {
   const [scenarios, setScenarios] = useState(null);
 
   useEffect(() => {
-    fetch("http://192.168.0.15:8080/api/scenarios")
+    fetch(
+      `http://${process.env.NEXT_PUBLIC_APS_SERVER_ADDRESS}:8080/api/scenarios`
+    )
       .then((resp) => resp.json())
       .then((json) => setScenarios(json.scenarios));
   }, []);
@@ -36,7 +38,7 @@ export default function ScenarioPage() {
   const runBtHandle = async (scenarioId) => {
     updateScenarioStatus(scenarioId, "PENDING");
     const response = await fetch(
-      `http://192.168.0.15:8080/api/scenarios/${scenarioId}/simulate`,
+      `http://${process.env.NEXT_PUBLIC_APS_SERVER_ADDRESS}:8080/api/scenarios/${scenarioId}/simulate`,
       {
         method: "POST",
       }
