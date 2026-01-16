@@ -34,9 +34,9 @@ export default function SimulateResultPage() {
     if (!id) return;
 
     fetch(
-      `http://${process.env.NEXT_PUBLIC_APS_SERVER_ADDRESS}:8080/api/scenarios/` +
+      `http://${process.env.NEXT_PUBLIC_APS_SERVER_ADDRESS}:8080/api/scenarios/ +
         id +
-        "/simulate"
+        /simulate`
     )
       .then((response) => response.json())
       .then((json) => setSchedules(json.schedules));
