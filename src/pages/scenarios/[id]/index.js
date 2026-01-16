@@ -68,7 +68,7 @@ export default function SimulateResultPage() {
         <Button variant="ghost" size="sm" onClick={() => setSort("job")}>
           작업
         </Button>{" "}
-        <Button ariant="ghost" size="sm" onClick={() => setSort("tool")}>
+        <Button variant="ghost" size="sm" onClick={() => setSort("tool")}>
           툴
         </Button>
       </div>
